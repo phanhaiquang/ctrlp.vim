@@ -148,7 +148,7 @@ to jump to it instead of opening a new instance: >
   let g:ctrlp_switch_buffer = 'Et'
 <
   e - jump when <cr> is pressed, but only to windows in the current tab.
-  t - jump when <c-t> is pressed, but only to windows in another tab.
+  t - jump when <c-l> is pressed, but only to windows in another tab.
   v - like "e", but jump when <c-v> is pressed.
   h - like "e", but jump when <c-x> is pressed.
   E, T, V, H - like "e", "t", "v", and "h", but jump to windows anywhere.
@@ -521,7 +521,7 @@ only need to keep the lines that you've changed the values (inside []): >
     \ 'PrtHistory(1)':        ['<c-p>'],
     \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
     \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
-    \ 'AcceptSelection("t")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<c-l>'],
     \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
     \ 'ToggleFocus()':        ['<s-tab>'],
     \ 'ToggleRegex()':        ['<c-r>'],
@@ -534,7 +534,7 @@ only need to keep the lines that you've changed the values (inside []): >
     \ 'PrtCurStart()':        ['<c-a>'],
     \ 'PrtCurEnd()':          ['<c-e>'],
     \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
-    \ 'PrtCurRight()':        ['<c-l>', '<right>'],
+    \ 'PrtCurRight()':        ['<right>'],
     \ 'PrtClearCache()':      ['<F5>'],
     \ 'PrtDeleteEnt()':       ['<F7>'],
     \ 'CreateNewFile()':      ['<c-y>'],
@@ -621,7 +621,7 @@ Structure of the functions: >
     " |             + 'e' : user pressed <cr>  (default)
     " |             + 'h' : user pressed <c-x> (default)
     " |             + 'v' : user pressed <c-v> (default)
-    " |             + 't' : user pressed <c-t> (default)
+    " |             + 't' : user pressed <c-l> (default)
     " |             + 'x' : user used the <c-o> console dialog (default) and
     " |                     chose "e[x]ternal".
     " |
@@ -631,7 +631,7 @@ Structure of the functions: >
 <
 Note: does not apply when opening multiple files with <c-z> and <c-o>.
 
-Example: open HTML files in the default web browser when <c-t> is pressed and
+Example: open HTML files in the default web browser when <c-l> is pressed and
 in Vim otherwise >
   function! HTMLOpenFunc(action, line)
     if a:action =~ '^[tx]$' && fnamemodify(a:line, ':e') =~? '^html\?$'
@@ -908,7 +908,7 @@ Opening/Creating a file:~
   <cr>
     Open the selected file in the 'current' window if possible.
 
-  <c-t>
+  <c-l>
     Open the selected file in a new 'tab'.
 
   <c-v>
@@ -1095,7 +1095,7 @@ Available extensions:~
     - Search for a directory and change the working directory to it.
     - Mappings:
       + <cr> change the local working directory for CtrlP and keep it open.
-      + <c-t> change the global working directory (exit).
+      + <c-l> change the global working directory (exit).
       + <c-v> change the local working directory for the current window (exit).
       + <c-x> change the global working directory to CtrlP's current local
         working directory (exit).
@@ -1315,7 +1315,7 @@ Before 2012/06/15~
 
     + New value for |g:ctrlp_follow_symlinks|: 2.
     + New value for |g:ctrlp_open_multiple_files|: 'j'.
-    + Allow using <c-t>, <c-x>, <c-v> to open files marked by <c-z>.
+    + Allow using <c-l>, <c-x>, <c-v> to open files marked by <c-z>.
     + Extend '..' (|ctrlp-input-formats| (d))
     + New input format: '@cd' (|ctrlp-input-formats| (d))
 
